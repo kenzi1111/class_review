@@ -109,8 +109,8 @@ class Customer:
         return self.first_name + " " + self.family_name
 
     # ageの定義
-    def age(self):
-        return self.age
+    # def age(self):
+    #     return self.age
 
     # 年齢に応じた入場料金の定義
     def entry_fee(self):
@@ -140,3 +140,150 @@ print(tom.info_csv())  # "Tom Ford,57,1500" という値を返す
 # ieyasuの場合
 ieyasu = Customer(first_name="Ieyasu", family_name="Tokugawa", age=73)
 print(ieyasu.info_csv())  # "Ieyasu Tokugawa,73,1200" という値を返す
+
+
+# 応用問題
+# c-5.3歳以下の入場料金の無料化
+
+class Customer:
+
+    # 初期設定
+    def __init__(self, first_name, family_name, age):
+        self.first_name = first_name
+        self.family_name = family_name
+        self.age = age
+
+    # full＿nameの定義
+    def full_name(self):
+        return self.first_name + " " + self.family_name
+
+    # ageの定義
+    # def age(self):
+    #     return self.age
+
+    # 年齢に応じた入場料金の定義
+    def entry_fee(self):
+        # 3歳以下は無料
+        if self.age <= 3:
+            return 0
+
+        # こども料金
+        if 3 <= self.age < 20:
+            return 1000
+
+        # おとな料金
+        elif 20 <= self.age < 65:
+            return 1500
+
+        # シニア料金
+        else:
+            return 1200
+
+    # 顧客情報をCSV形式で出力する
+    def info_csv(self):
+        return self.first_name + " " + self.family_name + "," + str(self.age) + "," + str(self.entry_fee())
+
+
+# 3歳以下の出力例
+Bob = Customer(first_name="Bob", family_name="Tanaka", age= 3)
+print(Bob.info_csv())  # Bob,Tanaka,0 という値を返す
+
+#c-6.75歳以上の料金区分の追加
+
+class Customer:
+
+    # 初期設定
+    def __init__(self, first_name, family_name, age):
+        self.first_name = first_name
+        self.family_name = family_name
+        self.age = age
+
+    # full＿nameの定義
+    def full_name(self):
+        return self.first_name + " " + self.family_name
+
+    # ageの定義
+    # def age(self):
+    #     return self.age
+
+    # 年齢に応じた入場料金の定義
+    def entry_fee(self):
+        # 3歳以下は無料
+        if self.age <= 3:
+            return 0
+
+        # こども料金
+        elif 3 <= self.age < 20:
+            return 1000
+
+        # おとな料金
+        elif 20 <= self.age < 65:
+            return 1500
+
+        # シニア料金
+        elif 65 <= self.age < 75:
+            return 1200
+        
+        #75歳以上の顧客の料金
+        else:
+            return 500
+            
+
+    # 顧客情報をCSV形式で出力する
+    def info_csv(self):
+        return self.first_name + " " + self.family_name + "," + str(self.age) + "," + str(self.entry_fee())
+
+
+# 75歳以上の出力例
+Kin = Customer(first_name="Kin", family_name="Narita", age= 100)
+print(Kin.info_csv())  # Kin,Narita,500 という値を返す
+
+#c-7.単一顧客の情報取得形式の追加その１
+
+class Customer:
+
+    # 初期設定
+    def __init__(self, first_name, family_name, age):
+        self.first_name = first_name
+        self.family_name = family_name
+        self.age = age
+
+    # full＿nameの定義
+    def full_name(self):
+        return self.first_name + " " + self.family_name
+
+    # ageの定義
+    # def age(self):
+    #     return self.age
+
+    # 年齢に応じた入場料金の定義
+    def entry_fee(self):
+        # 3歳以下は無料
+        if self.age <= 3:
+            return 0
+
+        # こども料金
+        elif 3 <= self.age < 20:
+            return 1000
+
+        # おとな料金
+        elif 20 <= self.age < 65:
+            return 1500
+
+        # シニア料金
+        elif 65 <= self.age < 75:
+            return 1200
+        
+        #75歳以上の顧客の料金
+        else:
+            return 500
+            
+
+    # 顧客情報をCSV形式で出力する
+    def info_csv(self):
+        return self.first_name + " " + self.family_name + "\t" + str(self.age) + "\t" + str(self.entry_fee())
+
+
+# 出力例
+Kin = Customer(first_name="Kin", family_name="Narita", age= 100)
+print(Kin.info_csv())  # Kin,Narita,500 という値を返す
