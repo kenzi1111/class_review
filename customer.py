@@ -127,8 +127,10 @@ class Customer:
             return 1200
 
     # 顧客情報をCSV形式で出力する
-    def info_csv(self,separator =","):
-        return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
+    def info_csv(self, separator=","):
+        # ↓修正箇所
+        # return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
+        return self.full_name() + separator + str(self.age) + separator + str(self.entry_fee())  # 修正しました。
 
 
 # kenの場合
@@ -180,15 +182,16 @@ class Customer:
             return 1200
 
     # 顧客情報をCSV形式で出力する
-    def info_csv(self,separator =","):
+    def info_csv(self, separator=","):
         return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
 
 
 # 3歳以下の出力例
-Bob = Customer(first_name="Bob", family_name="Tanaka", age= 3)
+Bob = Customer(first_name="Bob", family_name="Tanaka", age=3)
 print(Bob.info_csv())  # Bob,Tanaka,0 という値を返す
 
-#c-6.75歳以上の料金区分の追加
+# c-6.75歳以上の料金区分の追加
+
 
 class Customer:
 
@@ -223,30 +226,32 @@ class Customer:
         # シニア料金
         elif 65 <= self.age < 75:
             return 1200
-        
-        #75歳以上の顧客の料金
+
+        # 75歳以上の顧客の料金
         else:
             return 500
-            
 
     # 顧客情報をCSV形式で出力する
-    def info_csv(self,separator=","):
+    def info_csv(self, separator=","):
         return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
 
 
 # 75歳以上の出力例
-Kin = Customer(first_name="Kin", family_name="Narita", age= 100)
+Kin = Customer(first_name="Kin", family_name="Narita", age=100)
 print(Kin.info_csv())  # Kin,Narita,100,500 という値を返す
 
-#c-7.単一顧客の情報取得形式の追加その１
+# c-7.単一顧客の情報取得形式の追加その１
+
 
 class Customer:
 
     # 初期設定
-    def __init__(self, first_name, family_name, age):
+    def __init__(self, first_name, family_name, age, separator):
         self.first_name = first_name
         self.family_name = family_name
         self.age = age
+        #追加：区切り要素
+        self.separator = separator
 
     # full＿nameの定義
     def full_name(self):
@@ -273,30 +278,35 @@ class Customer:
         # シニア料金
         elif 65 <= self.age < 75:
             return 1200
-        
-        #75歳以上の顧客の料金
+
+        # 75歳以上の顧客の料金
         else:
             return 500
-            
+    #追加：区切りメソッド
+    def separate(self):
+        return self.separator
 
     # 顧客情報をCSV形式で出力する
-    def info_csv(self,separetar ="\t"):
-        return self.first_name + " " + self.family_name + separetar + str(self.age) + separetar + str(self.entry_fee())
+    def info_csv(self):
+        # 追加：区切り要素　self.separate()
+        # return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
+        return self.first_name + " " + self.family_name + self.separate() + str(self.age) + self.separate() + str(self.entry_fee())
 
 
 # 出力例
-Kin = Customer(first_name="Kin", family_name="Narita", age= 100)
+# 追加：区切り要素（separator="\t"）を追加
+Kin = Customer(first_name="Kin", family_name="Narita", age=100, separator="\t")
 print(Kin.info_csv())  # Kin　Narita　100 500 という値を返す
 
-#c-8.単一顧客の情報取得形式の追加その2
-
+# c-8.単一顧客の情報取得形式の追加その2
 class Customer:
 
-    # 初期設定
-    def __init__(self, first_name, family_name, age):
+    def __init__(self, first_name, family_name, age, separator):
         self.first_name = first_name
         self.family_name = family_name
         self.age = age
+        #追加：区切り要素
+        self.separator = separator
 
     # full＿nameの定義
     def full_name(self):
@@ -323,17 +333,23 @@ class Customer:
         # シニア料金
         elif 65 <= self.age < 75:
             return 1200
-        
-        #75歳以上の顧客の料金
+
+        # 75歳以上の顧客の料金
         else:
             return 500
-            
+        
+    #追加：区切りメソッド
+    def separate(self):
+        return self.separator
 
     # 顧客情報をCSV形式で出力する
-    def info_csv(self,separator = "|"):
-        return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
+    def info_csv(self):
+        # 追加：区切りメソッド　self.separate()
+        # return self.full_name() + separater() + str(self.age) + separater() + str(self.entry_fee())
+        return self.full_name() + self.separate() + str(self.age) + self.separate() + str(self.entry_fee())
 
 
 # 出力例
-Kin = Customer(first_name="Kin", family_name="Narita", age= 100)
+# 追加：区切り要素　separator ＝”|”
+Kin = Customer(first_name="Kin", family_name="Narita", age=100, separator="|")
 print(Kin.info_csv())  # Kin Narita|100|500 という値を返す
