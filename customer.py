@@ -125,7 +125,7 @@ class Customer:
         # シニア料金
         else:
             return 1200
-
+    
     # 顧客情報をCSV形式で出力する
     def info_csv(self, separator=","):
         # ↓修正箇所
@@ -283,14 +283,14 @@ class Customer:
         else:
             return 500
     #追加：区切りメソッド
-    def separate(self):
-        return self.separator
+    #def separate(self):
+    #    return self.separator
 
     # 顧客情報をCSV形式で出力する
     def info_csv(self):
         # 追加：区切り要素　self.separate()
         # return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
-        return self.first_name + " " + self.family_name + self.separate() + str(self.age) + self.separate() + str(self.entry_fee())
+        return self.first_name + " " + self.family_name + self.separator + str(self.age) + self.separator + str(self.entry_fee())
 
 
 # 出力例
@@ -339,14 +339,14 @@ class Customer:
             return 500
         
     #追加：区切りメソッド
-    def separate(self):
-        return self.separator
+    #def separate(self):
+    #    return self.separator
 
     # 顧客情報をCSV形式で出力する
     def info_csv(self):
         # 追加：区切りメソッド　self.separate()
         # return self.full_name() + separater() + str(self.age) + separater() + str(self.entry_fee())
-        return self.full_name() + self.separate() + str(self.age) + self.separate() + str(self.entry_fee())
+        return self.full_name() + self.separator + str(self.age) + self.separator + str(self.entry_fee())
 
 
 # 出力例
