@@ -286,4 +286,4 @@ class Customer:
 
 # 出力例
 Kin = Customer(first_name="Kin", family_name="Narita", age= 100)
-print(Kin.info_csv())  # Kin,Narita,500 という値を返す
+print(Kin.info_csv())  # Kin　Narita　100 500 という値を返す
