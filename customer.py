@@ -246,12 +246,12 @@ print(Kin.info_csv())  # Kin,Narita,100,500 という値を返す
 class Customer:
 
     # 初期設定
-    def __init__(self, first_name, family_name, age, separator):
+    def __init__(self, first_name, family_name, age):
         self.first_name = first_name
         self.family_name = family_name
         self.age = age
         #追加：区切り要素
-        self.separator = separator
+        #self.separator = separator
 
     # full＿nameの定義
     def full_name(self):
@@ -290,23 +290,23 @@ class Customer:
     def info_csv(self):
         # 追加：区切り要素　self.separate()
         # return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
-        return self.first_name + " " + self.family_name + self.separator + str(self.age) + self.separator + str(self.entry_fee())
+        return self.first_name + "\t" + self.family_name + "\t" + str(self.age) + "\t" + str(self.entry_fee())
 
 
 # 出力例
 # 追加：区切り要素（separator="\t"）を追加
-Kin = Customer(first_name="Kin", family_name="Narita", age=100, separator="\t")
+Kin = Customer(first_name="Kin", family_name="Narita", age=100)
 print(Kin.info_csv())  # Kin　Narita　100 500 という値を返す
 
 # c-8.単一顧客の情報取得形式の追加その2
 class Customer:
 
-    def __init__(self, first_name, family_name, age, separator):
+    def __init__(self, first_name, family_name, age):
         self.first_name = first_name
         self.family_name = family_name
         self.age = age
         #追加：区切り要素
-        self.separator = separator
+        # self.separator = separator
 
     # full＿nameの定義
     def full_name(self):
@@ -346,10 +346,10 @@ class Customer:
     def info_csv(self):
         # 追加：区切りメソッド　self.separate()
         # return self.full_name() + separater() + str(self.age) + separater() + str(self.entry_fee())
-        return self.full_name() + self.separator + str(self.age) + self.separator + str(self.entry_fee())
+        return self.full_name() + "|" + str(self.age) + "|" + str(self.entry_fee())
 
 
 # 出力例
 # 追加：区切り要素　separator ＝”|”
-Kin = Customer(first_name="Kin", family_name="Narita", age=100, separator="|")
+Kin = Customer(first_name="Kin", family_name="Narita", age=100)
 print(Kin.info_csv())  # Kin Narita|100|500 という値を返す
