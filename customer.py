@@ -127,10 +127,10 @@ class Customer:
             return 1200
     
     # 顧客情報をCSV形式で出力する
-    def info_csv(self, separator=","):
+    def info_csv(self):
         # ↓修正箇所
         # return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
-        return self.full_name() + separator + str(self.age) + separator + str(self.entry_fee())  # 修正しました。
+        return self.full_name() + "," + str(self.age) + "," + str(self.entry_fee())  # 修正しました。
 
 
 # kenの場合
@@ -182,8 +182,8 @@ class Customer:
             return 1200
 
     # 顧客情報をCSV形式で出力する
-    def info_csv(self, separator=","):
-        return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
+    def info_csv(self):
+        return self.full_name() + "," + str(self.age) + "," + str(self.entry_fee())
 
 
 # 3歳以下の出力例
@@ -232,8 +232,9 @@ class Customer:
             return 500
 
     # 顧客情報をCSV形式で出力する
-    def info_csv(self, separator=","):
-        return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
+    def info_csv(self):
+            return self.full_name() + "," + str(self.age) + "," + str(self.entry_fee())
+    
 
 
 # 75歳以上の出力例
@@ -288,15 +289,16 @@ class Customer:
 
     # 顧客情報をCSV形式で出力する
     def info_csv(self):
-        # 追加：区切り要素　self.separate()
-        # return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
-        return self.first_name + "\t" + self.family_name + "\t" + str(self.age) + "\t" + str(self.entry_fee())
+        return self.full_name() + "," + str(self.age) + "," + str(self.entry_fee())
+    # 顧客情報をCSV形式かつタブ区切りで出力する
+    def info_tab(self):
+        return self.full_name() + "\t" + str(self.age) + "\t" + str(self.entry_fee())
 
-
-# 出力例
-# 追加：区切り要素（separator="\t"）を追加
 Kin = Customer(first_name="Kin", family_name="Narita", age=100)
-print(Kin.info_csv())  # Kin　Narita　100 500 という値を返す
+print(Kin.info_csv())  # Kin Narita,100,500 という値を返す
+Kin = Customer(first_name="Kin", family_name="Narita", age=100)
+print(Kin.info_tab()) # Kin Narita 100 500 という値を返す
+
 
 # c-8.単一顧客の情報取得形式の追加その2
 class Customer:
@@ -344,12 +346,17 @@ class Customer:
 
     # 顧客情報をCSV形式で出力する
     def info_csv(self):
-        # 追加：区切りメソッド　self.separate()
-        # return self.full_name() + separater() + str(self.age) + separater() + str(self.entry_fee())
-        return self.full_name() + "|" + str(self.age) + "|" + str(self.entry_fee())
+        return self.full_name() + "," + str(self.age) + "," + str(self.entry_fee())
+     # 顧客情報をCSV形式かつタブ区切りで出力する
+    def info_tab(self):
+        return self.full_name() + "\t" + str(self.age) + "\t" + str(self.entry_fee())
+     # 顧客情報をCSV形式かつパイプ区切りで出力する
+    def info_pipe(self):
+        return self.full_name() + "|" + str(self.age) + "|" + str(self.entry_fee())    
 
-
-# 出力例
-# 追加：区切り要素　separator ＝”|”
 Kin = Customer(first_name="Kin", family_name="Narita", age=100)
-print(Kin.info_csv())  # Kin Narita|100|500 という値を返す
+print(Kin.info_csv())  # Kin Narita,100,500 という値を返す
+Kin = Customer(first_name="Kin", family_name="Narita", age=100)
+print(Kin.info_tab()) # Kin Narita 100 500 という値を返す
+Kin = Customer(first_name="Kin", family_name="Narita", age=100)
+print(Kin.info_pipe()) # Kin Narita|100|500 という値を返す
