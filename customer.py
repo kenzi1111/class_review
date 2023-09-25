@@ -35,8 +35,8 @@ class Customer:
         self.age = age
 
     # ageの定義
-    def age(self):
-        return self.age
+    # def age(self):
+    #     return self.age
 
 
 # kenの年齢
