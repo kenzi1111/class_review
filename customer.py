@@ -1,8 +1,8 @@
 # C-1.フルネームを取得できる
 
+
 # customerクラスの定義
 class Customer:
-
     # 初期設定
     def __init__(self, first_name, family_name):
         self.first_name = first_name
@@ -27,7 +27,6 @@ print(tom.full_name())
 
 
 class Customer:
-
     # 初期設定
     def __init__(self, first_name, family_name, age):
         self.first_name = first_name
@@ -57,7 +56,6 @@ print(ieyasu.age)  # 73 という値を返す
 
 
 class Customer:
-
     # 初期設定
     def __init__(self, first_name, family_name, age):
         self.first_name = first_name
@@ -97,7 +95,6 @@ print(ieyasu.entry_fee())  # 1200 という値を返す
 
 
 class Customer:
-
     # 初期設定
     def __init__(self, first_name, family_name, age):
         self.first_name = first_name
@@ -130,7 +127,9 @@ class Customer:
     def info_csv(self):
         # ↓修正箇所
         # return self.first_name + " " + self.family_name + separator + str(self.age) + separator + str(self.entry_fee())
-        return self.full_name() + "," + str(self.age) + "," + str(self.entry_fee())  # 修正しました。
+        return (
+            self.full_name() + "," + str(self.age) + "," + str(self.entry_fee())
+        )  # 修正しました。
 
 
 # kenの場合
@@ -147,8 +146,8 @@ print(ieyasu.info_csv())  # "Ieyasu Tokugawa,73,1200" という値を返す
 # 応用問題
 # c-5.3歳以下の入場料金の無料化
 
-class Customer:
 
+class Customer:
     # 初期設定
     def __init__(self, first_name, family_name, age):
         self.first_name = first_name
@@ -194,7 +193,6 @@ print(Bob.info_csv())  # Bob,Tanaka,0 という値を返す
 
 
 class Customer:
-
     # 初期設定
     def __init__(self, first_name, family_name, age):
         self.first_name = first_name
@@ -244,7 +242,6 @@ print(Kin.info_csv())  # Kin,Narita,100,500 という値を返す
 
 
 class Customer:
-
     # 初期設定
     def __init__(self, first_name, family_name, age):
         self.first_name = first_name
@@ -282,6 +279,7 @@ class Customer:
         # 75歳以上の顧客の料金
         else:
             return 500
+
     # 追加：区切りメソッド
     # def separate(self):
     #    return self.separator
@@ -289,6 +287,7 @@ class Customer:
     # 顧客情報をCSV形式で出力する
     def info_csv(self):
         return self.full_name() + "," + str(self.age) + "," + str(self.entry_fee())
+
     # 顧客情報をCSV形式かつタブ区切りで出力する
 
     def info_tab(self):
@@ -303,7 +302,6 @@ print(Kin.info_tab())  # Kin Narita 100 500 という値を返す
 
 # c-8.単一顧客の情報取得形式の追加その2
 class Customer:
-
     def __init__(self, first_name, family_name, age):
         self.first_name = first_name
         self.family_name = family_name
@@ -348,11 +346,13 @@ class Customer:
     # 顧客情報をCSV形式で出力する
     def info_csv(self):
         return self.full_name() + "," + str(self.age) + "," + str(self.entry_fee())
-     # 顧客情報をCSV形式かつタブ区切りで出力する
+
+    # 顧客情報をCSV形式かつタブ区切りで出力する
 
     def info_tab(self):
         return self.full_name() + "\t" + str(self.age) + "\t" + str(self.entry_fee())
-     # 顧客情報をCSV形式かつパイプ区切りで出力する
+
+    # 顧客情報をCSV形式かつパイプ区切りで出力する
 
     def info_pipe(self):
         return self.full_name() + "|" + str(self.age) + "|" + str(self.entry_fee())

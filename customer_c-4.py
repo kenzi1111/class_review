@@ -1,8 +1,8 @@
 # C-4.単一顧客情報をCSV形式で取得できる
 
+
 # customerクラスの定義
 class Customer:
-
     # 初期設定
     def __init__(self, first_name, family_name, age):
         self.first_name = first_name
@@ -30,10 +30,18 @@ class Customer:
         # シニア料金
         else:
             return 1200
-        
+
     # 顧客情報をCSV形式で出力する
     def info_csv(self):
-        return self.first_name + " " + self.family_name + "," + str(self.age) + "," + str(self.entry_fee())
+        return (
+            self.first_name
+            + " "
+            + self.family_name
+            + ","
+            + str(self.age)
+            + ","
+            + str(self.entry_fee())
+        )
 
 
 # kenの場合
